@@ -1,0 +1,55 @@
+locale: ru
+backend:
+  name: git-gateway
+  repo: sadiksites/asylperzent-preview
+  branch: main
+  auth_type: pkce
+  base_url: https://auth.decapbridge.com
+  # TODO: вставить DecapBridge site ID
+  auth_endpoint: /sites//pkce
+  auth_token_endpoint: /sites//token
+  gateway_url: https://gateway.decapbridge.com
+  squash_merges: true
+site_url: https://sadiksites.github.io/asylperzent-preview/
+display_url: https://sadiksites.github.io/asylperzent-preview/
+logo_url: https://sadiksites.github.io/asylperzent-preview/img/logo.jpg
+media_folder: img/uploads
+public_folder: img/uploads
+collections:
+- name: site
+  label: Сайт «Асыл Перзент»
+  editor: {preview: false}
+  files:
+  - name: site
+    label: 🏠 Весь сайт
+    file: data/site.json
+    fields:
+    - {name: hero, label: Главное фото, widget: image}
+    - {name: name, label: Название, widget: object, fields: [{name: kk, label: KZ}, {name: ru, label: RU}]}
+    - {name: tagline, label: Подзаголовок, widget: object, fields: [{name: kk, label: KZ, widget: text}, {name: ru, label: RU, widget: text}]}
+    - {name: about, label: О нас, widget: object, fields: [{name: kk, label: KZ, widget: text}, {name: ru, label: RU, widget: text}]}
+    - {name: head, label: Руководитель, widget: object, fields: [{name: kk, label: KZ}, {name: ru, label: RU}]}
+    - name: features
+      label: Преимущества
+      widget: list
+      fields: [{name: icon, label: Иконка}, {name: title, label: Текст, widget: object, fields: [{name: kk, label: KZ}, {name: ru, label: RU}]}]
+    - name: groups
+      label: Группы
+      widget: list
+      fields: [{name: name, label: Название}, {name: age, label: Возраст}, {name: color, label: Цвет}]
+    - name: clubs
+      label: Кружки
+      widget: list
+      fields: [{name: kk, label: KZ}, {name: ru, label: RU}]
+    - {name: gallery, label: Фотогалерея, widget: list, field: {name: photo, label: Фото, widget: image}}
+    - {name: news, label: Новости (скрыто), widget: list, required: false, fields: [{name: date, label: Дата, widget: datetime}, {name: title, label: Заголовок, widget: object, fields: [{name: kk, label: KZ}, {name: ru, label: RU}]}]}
+    - name: contact
+      label: Контакты
+      widget: object
+      fields:
+      - {name: address, label: Адрес, widget: object, fields: [{name: kk, label: KZ}, {name: ru, label: RU}]}
+      - {name: phone, label: Телефон}
+      - {name: wa, label: WhatsApp (как показать)}
+      - {name: watel, label: WhatsApp (цифры)}
+      - {name: ig, label: Instagram}
+      - {name: hours, label: Режим, widget: object, fields: [{name: kk, label: KZ}, {name: ru, label: RU}]}
