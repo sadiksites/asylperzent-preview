@@ -45,5 +45,5 @@ $('cls').innerHTML=D.clubs.map(x=>`<li>${t(x)}</li>`).join('');
 $('sts').innerHTML=(D.stats||[]).map(s=>`<div><b>${s.n}</b>${t(s)}</div>`).join('');$('stf').innerHTML=(D.staff||[]).map(s=>`<figure><img src="${s.photo}" alt="${s.name}" loading="lazy"><figcaption>${s.name}</figcaption></figure>`).join('');$('gal').innerHTML=D.gallery.map(p=>`<img src="${p}" alt="" loading="lazy">`).join('');
 $('cdl').innerHTML=`<dt>${T('addr')}</dt><dd>${t(c.address)}</dd><dt>${T('ph')}</dt><dd><a href="tel:+${c.phone.replace(/\D/g,'')}">${c.phone}</a></dd><dt>${T('em')}</dt><dd><a href="mailto:${c.email}">${c.email}</a></dd><dt>WhatsApp</dt><dd><a href="https://wa.me/${c.watel}">${c.wa}</a></dd><dt>Instagram</dt><dd><a href="https://instagram.com/${c.ig}">@${c.ig}</a></dd><dt>${T('hrs')}</dt><dd>${t(c.hours)}</dd>`}
 document.addEventListener('click',e=>{const b=e.target.closest('.lang button');if(b){L=+b.dataset.l;localStorage.lang=L;draw()}});
-fetch('data/site.json?v=1').then(r=>r.json()).then(j=>{D=j;draw()});
+fetch('data/site.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(j=>{D=j;draw()});
 </script></body></html>
